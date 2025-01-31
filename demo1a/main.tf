@@ -10,26 +10,25 @@ terraform {
 provider "docker" {}
 
 resource "docker_image" "nginx" {
-  name         = "nginx"
+  name         = var.container_name
   keep_locally = false
 }
 
 resource "docker_container" "nginx" {
   image = docker_image.nginx.image_id
-  name  = "tutorial"
+  name  = "tutorial1a"
 
   ports {
     internal = 80
-    external = 8000
-    ### change 01
-    ### external = 8001
+    external = 8002
   }
 }
 
-### change 02
-### output "image_id_web01" {
 output "image_id" {
   value = docker_image.nginx.image_id
+}
+output "cmdline_var" {
+  value = var.cmdline_var
 }
 
 ### equivalent docker command
