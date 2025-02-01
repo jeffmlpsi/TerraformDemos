@@ -21,6 +21,16 @@ output "container_id" {
   description = "value of the container id"
   value = docker_container.dummyapp.id
 }
+output "container_name" {
+  description = "value of the container name"
+  value = var.container_name
+}
+
+output "image_name" {
+  description = "value of the image name"
+  value = var.image_name
+  
+}
 
 output "port_mappings" {
   value = "Container ${var.container_name} is mapped to ${var.iport}:${var.oport}"
