@@ -61,7 +61,7 @@ output "module_info" {
       container_id = m.container_id
       container_name = m.container_name
       image_name = m.image_name
-      port_mappinds = m.port_mappings
+      port_mappings = m.port_mappings
     }
   ]
 }
