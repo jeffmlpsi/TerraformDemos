@@ -11,9 +11,10 @@ provider "docker" {}
 
 module "mydummy" {
   source = "./dummy"
+  iport = 80
   oport = 8082 + count.index
   container_name = join("", ["MyDummyApp", count.index])
-  image_name = "sha256:cd61b3665c275aa8c77550878a094f08db7b5ea9ff7d4b1d6f8ab3bee26b6c91"
+  image_name = "nginx"
 
   count = 4
 
@@ -21,7 +22,7 @@ module "mydummy" {
 
 resource "docker_image" "nginx" {
   name         = "nginx"
-  keep_locally = false
+  keep_locally = true
 }
 
 resource "docker_container" "nginx" {
@@ -33,3 +34,8 @@ resource "docker_container" "nginx" {
     external = 8001
   }
 }
+
+output "module_info" {
+  value = module.mydummy
+}
+

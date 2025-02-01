@@ -4,6 +4,11 @@ variable "container_name" {
   default = "MyDummyApp"
 }
 
+output "container_name" {
+  description = "value of the container name"
+  value = var.container_name
+}
+
 variable "image_name" {
   description = ""
   type = string

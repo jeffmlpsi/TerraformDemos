@@ -8,7 +8,7 @@ terraform {
 }
 
 resource "docker_container" "dummyapp" {
-  image = var.image_name
+  image = "nginx"
   name = var.container_name
 
   ports {
@@ -18,5 +18,10 @@ resource "docker_container" "dummyapp" {
 }
 
 output "container_id" {
+  description = "value of the container id"
   value = docker_container.dummyapp.id
+}
+
+output "port_mappings" {
+  value = "Container ${var.container_name} is mapped to ${var.iport}:${var.oport}"
 }
